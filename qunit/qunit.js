@@ -8,7 +8,7 @@
  * or GPL (GPL-LICENSE.txt) licenses.
  */
 
-(function( window ) {
+(function( window, undefined ) {
 
 var QUnit,
 	config,
@@ -41,7 +41,7 @@ function Test( name, testName, expected, async, callback ) {
 Test.prototype = {
 	init: function() {
 		var a, b, li,
-        tests = id( "qunit-tests" );
+			tests = id( "qunit-tests" );
 
 		if ( tests ) {
 			b = document.createElement( "strong" );
@@ -1427,7 +1427,7 @@ QUnit.jsDump = (function() {
 					type = "date";
 				} else if ( QUnit.is( "Function", obj) ) {
 					type = "function";
-				} else if ( typeof obj.setInterval !== undefined && typeof obj.document !== "undefined" && typeof obj.nodeType === "undefined" ) {
+				} else if ( typeof obj.setInterval !== "undefined" && typeof obj.document !== "undefined" && typeof obj.nodeType === "undefined" ) {
 					type = "window";
 				} else if ( obj.nodeType === 9 ) {
 					type = "document";
@@ -1648,7 +1648,7 @@ QUnit.diff = (function() {
 			if ( !hasOwn.call( ns, i ) ) {
 				continue;
 			}
-			if ( ns[i].rows.length == 1 && typeof os[i] != "undefined" && os[i].rows.length == 1 ) {
+			if ( ns[i].rows.length == 1 && typeof os[i] !== "undefined" && os[i].rows.length == 1 ) {
 				n[ ns[i].rows[0] ] = {
 					text: n[ ns[i].rows[0] ],
 					row: os[i].rows[0]
